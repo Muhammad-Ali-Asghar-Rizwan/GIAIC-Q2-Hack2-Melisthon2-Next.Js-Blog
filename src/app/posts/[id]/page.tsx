@@ -73,7 +73,7 @@ const posts = [
     const { id } = params;
     const post = posts.find((p) => p.id === id);
 
-    if (!post) {
+    if (!post?.id) {
         return (
             <h2 className='h-screen flex items-center justify-center text-center font-bold text-5xl'>
                 404 Post not Found
