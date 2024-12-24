@@ -121,13 +121,6 @@
 
 
 
-
-
-
-
-
-
-
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
@@ -137,11 +130,11 @@ const posts = [
   {
     id: '1',
     title: 'Next.Js 15',
-    heading:'What’s New in Next.js 15: A Complete Guide to the Latest Features',
-    description: 'Next.js 15 has arrived, bringing with it a host of exciting features, improvements, and optimizations that elevate the developer experience. Here’s a comprehensive guide to whats new in Next.js 15 and how you can leverage these features in your projects.',
+    heading: 'What’s New in Next.js 15: A Complete Guide to the Latest Features',
+    description: 'Next.js 15 has arrived, bringing with it a host of exciting features, improvements, and optimizations...',
     date: '2024-11-28',
     imageUrl: '/images/next.jpg',
-    alt: "Next.js 15",
+    alt: 'Next.js 15',
   },
   // Add other posts here...
 ];
@@ -151,13 +144,11 @@ interface PostParams {
 }
 
 interface PostProps {
-  params: PostParams | Promise<PostParams>; // Allowing the params to be either a resolved object or a Promise
+  params: PostParams;
 }
 
-export default async function Post({ params }: PostProps) {
-  // Ensure params are resolved if they're a Promise
-  const resolvedParams = await (params instanceof Promise ? params : Promise.resolve(params));
-  const { id } = resolvedParams;
+export default function Post({ params }: PostProps) {
+  const { id } = params;
   const post = posts.find((p) => p.id === id);
 
   if (!post) {
