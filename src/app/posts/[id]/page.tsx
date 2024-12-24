@@ -69,16 +69,17 @@ const posts = [
     // Add more unique entries as needed
   ];
 
-export default function Post({params}: {params: {id:any}}) {
-    const {id} = params;
-    const post  = posts.find((p) => p.id === id);
+  export default function Post({ params }: { params: { id: string } }) {
+    const { id } = params;
+    const post = posts.find((p) => p.id === id);
 
     if (!post) {
-        return(
-            <h2 className='h-screen flex items-center justify-center text-center font-bold text-5xl'>404 Post not Found</h2>
-        )
+        return (
+            <h2 className='h-screen flex items-center justify-center text-center font-bold text-5xl'>
+                404 Post not Found
+            </h2>
+        );
     }
-
     const renderParagraph = (descrption: string) => {
       return descrption.split("/n").map((para, index) => (
         <p key={index} className='mt-4 text-justify'>
