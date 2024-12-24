@@ -125,6 +125,111 @@
 
 
 
+// import AuthorCard from '@/app/component/AuthoreCard';
+// import CommentSection from '@/app/component/CommentSection';
+// import Image from 'next/image';
+// import React from 'react';
+
+// interface Post {
+//   id: string;
+//   title: string;
+//   heading: string;
+//   description: string;
+//   date: string;
+//   imageUrl: string;
+//   alt: string;
+// }
+
+// interface PageProps {
+//   params: {
+//     id: string;
+//   };
+// }
+
+// const posts: Post[] = [
+//   {
+//     id: '1',
+//     title: 'Next.Js 15',
+//     heading: 'What’s New in Next.js 15: A Complete Guide to the Latest Features',
+//     description: 'Next.js 15 has arrived, bringing with it a host of exciting features, improvements, and optimizations that elevate the developer experience. Heres a comprehensive guide to whats new in Next.js 15 and how you can leverage these features in your projects.',
+//     date: '2024-11-28',
+//     imageUrl: '/images/next.jpg',
+//     alt: 'Next.js 15',
+//   },
+//   {
+//     id: '2',
+//     title: 'Next.Js 15',
+//     heading: 'How to Set Up Your Next.js 15 Project: A Beginner-Friendly Guide',
+//     description: 'Setting up a Next.js 15 project is incredibly simple and beginner-friendly! Start by installing Node.js and npm on your system, then use the command npx create-next-app@latest my-nextjs-app to create a new project. Navigate into the project directory using cd my-nextjs-app and start the development server with npm run dev to preview your app at http://localhost:3000. Next.js 15 comes with a well-structured default setup, including optimized routes, server components, and support for modern tools like TypeScript. Whether youre building a blog, portfolio, or complex web application, this framework has everything you need to kickstart your development journey!',
+//     date: '2024-11-28',
+//     imageUrl: '/images/next.jpg',
+//     alt: 'Next.js 15',
+//   },
+//   // ...other posts
+// ];
+
+// export async function Post(context: { params: { id: string } }) {
+//   const { id } = context.params;
+//   return {
+//     props: {
+//       params: {
+//         id,
+//       },
+//     },
+//   };
+// }
+
+// const PostPage = ({ params }: PageProps) => {
+//   const post = posts.find((post) => post.id === params.id);
+
+//   if (!post) {
+//     return <div>Post not found</div>;
+//   }
+
+//   const renderParagraph = (descrption: string) => {
+//           return descrption.split("/n").map((para, index) => (
+//             <p key={index} className='mt-4 text-justify'>
+//               {para.trim()}
+//             </p>
+//           ))
+//         };    
+
+//   return (
+//     // <div>
+//     //   <h1>{post.title}</h1>
+//     //   <h2>{post.heading}</h2>
+//     //   <p>{post.description}</p>
+//     //   <p>{post.date}</p>
+//     //   <Image src={post.imageUrl} alt={post.alt} width={600} height={400} />
+//     //   <CommentSection  postId={post.id}/>
+//     //   <AuthorCard />
+//     // </div>
+//     <div className='max-w-3xl mx-auto  p-5'>
+//          <h1 className='md:text-4xl text-3xl font-bold text-red-600 text-center '>{post.title}</h1>
+    
+//            {post.imageUrl && (
+//              <Image src={post.imageUrl} alt={post.alt} width={300} height={300} className='w-full h-auto rounded-lg mt-6 '/>
+//            )}
+    
+//           <h1 className='text-2xl text-zinc-900 mt-6 font-bold'>  {post.heading}</h1>
+    
+//            <div className='mt-8 text-lg text-slate-700 '>
+//              {renderParagraph(post.description)}
+    
+//            </div>
+    
+    
+//            <CommentSection postId={post.id}/>
+//            <AuthorCard/>
+//          </div>
+//   );
+// };
+
+// export default PostPage;
+
+
+
+
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
@@ -151,33 +256,13 @@ const posts: Post[] = [
     id: '1',
     title: 'Next.Js 15',
     heading: 'What’s New in Next.js 15: A Complete Guide to the Latest Features',
-    description: 'Next.js 15 has arrived, bringing with it a host of exciting features, improvements, and optimizations that elevate the developer experience. Heres a comprehensive guide to whats new in Next.js 15 and how you can leverage these features in your projects.',
+    description: 'Next.js 15 has arrived, bringing with it a host of exciting features...',
     date: '2024-11-28',
     imageUrl: '/images/next.jpg',
     alt: 'Next.js 15',
   },
-  {
-    id: '2',
-    title: 'Next.Js 15',
-    heading: 'How to Set Up Your Next.js 15 Project: A Beginner-Friendly Guide',
-    description: 'Setting up a Next.js 15 project is incredibly simple and beginner-friendly! Start by installing Node.js and npm on your system, then use the command npx create-next-app@latest my-nextjs-app to create a new project. Navigate into the project directory using cd my-nextjs-app and start the development server with npm run dev to preview your app at http://localhost:3000. Next.js 15 comes with a well-structured default setup, including optimized routes, server components, and support for modern tools like TypeScript. Whether youre building a blog, portfolio, or complex web application, this framework has everything you need to kickstart your development journey!',
-    date: '2024-11-28',
-    imageUrl: '/images/next.jpg',
-    alt: 'Next.js 15',
-  },
-  // ...other posts
+  // other posts
 ];
-
-export async function Post(context: { params: { id: string } }) {
-  const { id } = context.params;
-  return {
-    props: {
-      params: {
-        id,
-      },
-    },
-  };
-}
 
 const PostPage = ({ params }: PageProps) => {
   const post = posts.find((post) => post.id === params.id);
@@ -186,42 +271,37 @@ const PostPage = ({ params }: PageProps) => {
     return <div>Post not found</div>;
   }
 
-  const renderParagraph = (descrption: string) => {
-          return descrption.split("/n").map((para, index) => (
-            <p key={index} className='mt-4 text-justify'>
-              {para.trim()}
-            </p>
-          ))
-        };    
+  const renderParagraph = (description: string) => {
+    return description.split("\n").map((para, index) => (
+      <p key={index} className="mt-4 text-justify">
+        {para.trim()}
+      </p>
+    ));
+  };
 
   return (
-    // <div>
-    //   <h1>{post.title}</h1>
-    //   <h2>{post.heading}</h2>
-    //   <p>{post.description}</p>
-    //   <p>{post.date}</p>
-    //   <Image src={post.imageUrl} alt={post.alt} width={600} height={400} />
-    //   <CommentSection  postId={post.id}/>
-    //   <AuthorCard />
-    // </div>
-    <div className='max-w-3xl mx-auto  p-5'>
-         <h1 className='md:text-4xl text-3xl font-bold text-red-600 text-center '>{post.title}</h1>
-    
-           {post.imageUrl && (
-             <Image src={post.imageUrl} alt={post.alt} width={300} height={300} className='w-full h-auto rounded-lg mt-6 '/>
-           )}
-    
-          <h1 className='text-2xl text-zinc-900 mt-6 font-bold'>  {post.heading}</h1>
-    
-           <div className='mt-8 text-lg text-slate-700 '>
-             {renderParagraph(post.description)}
-    
-           </div>
-    
-    
-           <CommentSection postId={post.id}/>
-           <AuthorCard/>
-         </div>
+    <div className="max-w-3xl mx-auto p-5">
+      <h1 className="md:text-4xl text-3xl font-bold text-red-600 text-center">
+        {post.title}
+      </h1>
+
+      {post.imageUrl && (
+        <Image
+          src={post.imageUrl}
+          alt={post.alt}
+          width={300}
+          height={300}
+          className="w-full h-auto rounded-lg mt-6"
+        />
+      )}
+
+      <h1 className="text-2xl text-zinc-900 mt-6 font-bold">{post.heading}</h1>
+
+      <div className="mt-8 text-lg text-slate-700">{renderParagraph(post.description)}</div>
+
+      <CommentSection postId={post.id} />
+      <AuthorCard />
+    </div>
   );
 };
 
