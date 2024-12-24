@@ -1,8 +1,8 @@
-// "use client"
+
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
-// import React from 'react'
+import React from 'react'
 const posts = [
     {
       id: '1',
