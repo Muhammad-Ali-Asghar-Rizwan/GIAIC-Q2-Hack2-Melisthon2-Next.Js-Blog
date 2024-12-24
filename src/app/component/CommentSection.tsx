@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
@@ -62,13 +63,13 @@ export default function CommentSection({}: CommentSectionProps) {
       <div className="mt-4 space-y-4">
         {comments.length > 0 ? (
           comments.map((comment) => (
-            <Card key={comment.id}>
+            <Card key={comment.id} className='mb-20 bg-zinc-800 shadow-lg shadow-black text-white'>
               <CardContent className="p-4">
-                <div className="font-semibold">{comment.author}</div>
-                <p>{comment.text}</p>
+                <div className="font-bold text-2xl underline ">{comment.author}</div>
+                <p className='mt-2 text-slate-200'>{comment.text}</p>
                 <Button
                   onClick={() => handleEditComment(comment.id)}
-                  className="mt-2 text-blue-500"
+                  className="mt-5 text-blue-500 hover:bg-white hover:text-black mb-9"
                 >
                   Edit
                 </Button>

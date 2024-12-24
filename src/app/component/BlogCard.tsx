@@ -26,13 +26,13 @@ export default function BlogCard({ post, isDarkBackground }: BlogCardProps) {
         className="w-full h-48 object-cover rounded-lg"
       />
 
-      <CardTitle className="text-xl font-normal mt-4 text-center">
+      <CardTitle className="text-2xl font-bold  mt-4 text-center  ">
         {post.title}
       </CardTitle>
       <br />
 
       <CardContent className="text-center">
-        <p>{post.description}</p>
+        <p className=''>{post.description}</p>
       </CardContent>
 
       <div className="flex flex-col items-center mt-4">
