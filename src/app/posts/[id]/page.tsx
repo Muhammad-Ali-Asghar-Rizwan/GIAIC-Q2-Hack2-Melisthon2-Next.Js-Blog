@@ -70,7 +70,7 @@ const posts = [
   ];
 
   export default function Post({ params }: { params: { id: unknown } }) {
-    const { id } = params;
+    const id = String(params.id); 
     const post = posts.find((p) => p.id === id);
 
     if (!post?.id) {
