@@ -1,4 +1,3 @@
-import { Facebook, Github, Linkedin, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import { CiLinkedin } from "react-icons/ci";
 import { VscGithub } from "react-icons/vsc";
