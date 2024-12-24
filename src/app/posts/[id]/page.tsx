@@ -69,7 +69,7 @@ const posts = [
     // Add more unique entries as needed
   ];
 
-  export default function Post({ params }: { params: { id: unknown } }) {
+  export default function Post({ params }: { params: { id: string } }) {
     const id = String(params.id); 
     const post = posts.find((p) => p.id === id);
 
