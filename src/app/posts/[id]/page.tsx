@@ -128,7 +128,6 @@
 
 
 
-import { Metadata } from 'next';
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
