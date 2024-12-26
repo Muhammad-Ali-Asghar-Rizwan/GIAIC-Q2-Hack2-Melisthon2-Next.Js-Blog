@@ -119,6 +119,10 @@
 //   )
 // }
 
+
+
+
+
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
@@ -137,15 +141,11 @@ const posts = [
   // Add other posts here...
 ];
 
-// interface PostParams {
-//   id: string;
-// }
-
 interface PostProps {
   params: { id: string };
 }
 
-export default async function Post({ params }: PostProps) {
+export default function Post({ params }: PostProps) {
   const { id } = params;
   const post = posts.find((p) => p.id === id);
 
@@ -191,8 +191,24 @@ export default async function Post({ params }: PostProps) {
   );
 }
 
+// Generates static parameters for dynamic routes
 export async function generateStaticParams() {
   return posts.map((post) => ({
     id: post.id,
   }));
+}
+
+export async function generateMetadata({ params }: PostProps) {
+  const post = posts.find((p) => p.id === params.id);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+  };
 }
