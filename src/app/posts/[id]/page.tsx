@@ -137,9 +137,9 @@ const posts = [
   // Add other posts here...
 ];
 
-interface PostParams {
-  id: string;
-}
+// interface PostParams {
+//   id: string;
+// }
 
 interface PostProps {
   params: { id: string };
