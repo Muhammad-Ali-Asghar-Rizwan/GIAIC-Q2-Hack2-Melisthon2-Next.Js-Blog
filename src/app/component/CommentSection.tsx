@@ -11,7 +11,7 @@ interface Comment {
 }
 
 interface CommentSectionProps {
-  postId: string;
+  postId: number;
 }
 
 export default function CommentSection({}: CommentSectionProps) {
@@ -23,7 +23,7 @@ export default function CommentSection({}: CommentSectionProps) {
   const handleAddComment = () => {
     if (newComment.trim() && authorName.trim()) {
       const newCommentObj: Comment = {
-        id: new Date().toISOString(),
+        id: new Date().toString(),
         author: authorName,
         text: newComment,
       };
