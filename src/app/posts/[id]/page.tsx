@@ -119,3 +119,94 @@
 //   )
 // }
 
+
+
+import AuthorCard from '@/app/component/AuthoreCard';
+import CommentSection from '@/app/component/CommentSection';
+import Image from 'next/image';
+import React from 'react';
+
+const posts = [
+  {
+    id: '1',
+    title: 'Next.Js 15',
+    heading: 'What’s New in Next.js 15: A Complete Guide to the Latest Features',
+    description: 'Next.js 15 has arrived, bringing with it a host of exciting features, improvements, and optimizations...',
+    date: '2024-11-28',
+    imageUrl: '/images/next.jpg',
+    alt: 'Next.js 15',
+  },
+  // Add other posts here...
+];
+
+interface PostProps {
+  params: { id: string };
+}
+
+export default function Post({ params }: PostProps) {
+  const { id } = params;
+  const post = posts.find((p) => p.id === id);
+
+  if (!post) {
+    return (
+      <h2 className='h-screen flex items-center justify-center text-center font-bold text-5xl'>
+        404 Post not Found
+      </h2>
+    );
+  }
+
+  const renderParagraph = (description: string) => {
+    return description.split("\n").map((para, index) => (
+      <p key={index} className='mt-4 text-justify'>
+        {para.trim()}
+      </p>
+    ));
+  };
+
+  return (
+    <div className='max-w-3xl mx-auto p-5'>
+      <h1 className='md:text-4xl text-3xl font-bold text-red-600 text-center'>{post.title}</h1>
+
+      {post.imageUrl && (
+        <Image
+          src={post.imageUrl}
+          alt={post.alt}
+          width={300}
+          height={300}
+          className='w-full h-auto rounded-lg mt-6'
+        />
+      )}
+
+      <h1 className='text-2xl text-zinc-900 mt-6 font-bold'>{post.heading}</h1>
+
+      <div className='mt-8 text-lg text-slate-700'>
+        {renderParagraph(post.description)}
+      </div>
+
+      <CommentSection postId={post.id} />
+      <AuthorCard />
+    </div>
+  );
+}
+
+// Generates static parameters for dynamic routes
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id,
+  }));
+}
+
+export async function generateMetadata({ params }: PostProps) {
+  const post = posts.find((p) => p.id === params.id);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+  };
+}
