@@ -119,8 +119,6 @@
 //   )
 // }
 
-
-
 import AuthorCard from '@/app/component/AuthoreCard';
 import CommentSection from '@/app/component/CommentSection';
 import Image from 'next/image';
@@ -144,10 +142,10 @@ interface PostParams {
 }
 
 interface PostProps {
-  params: PostParams;
+  params: { id: string };
 }
 
-export default function Post({ params }: PostProps) {
+export default async function Post({ params }: PostProps) {
   const { id } = params;
   const post = posts.find((p) => p.id === id);
 
@@ -191,4 +189,10 @@ export default function Post({ params }: PostProps) {
       <AuthorCard />
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id,
+  }));
 }
