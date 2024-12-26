@@ -11,7 +11,7 @@ interface Comment {
 }
 
 interface CommentSectionProps {
-  postId: number;
+  postId: string;
 }
 
 export default function CommentSection({}: CommentSectionProps) {
